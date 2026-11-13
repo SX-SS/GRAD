@@ -1,25 +1,25 @@
-# HiSTAR: Hierarchical Semantic-Aware Spatio-Temporal Decoding with Vision-Language Models for Radiology Scanpath Prediction
+# GRAD: Global-Regional Attribute Adaptation and Spatio-Temporal Decoding with Vision-Language Models for Radiology Scanpath Prediction
 
-HiSTAR is a radiology scanpath prediction framework that combines hierarchical clinical semantics, task-relevant spatial localization, and progressive temporal decoding.
+GRAD is a radiology scanpath prediction framework that combines hierarchical clinical semantics, task-relevant spatial localization, and progressive temporal decoding.
 
-![Overview of HiSTAR](assets/histar_overview.png)
+![Overview of GRAD](assets/GRAD_overview.png)
 
-**HiSTAR overview.** Hierarchical Semantic Adaptation incorporates global context and granularity semantics to construct image-specific search conditions and semantics-aware regional representations. Spatial-guided Temporal Decoding estimates a task-relevant spatial prior for progressive trajectory generation, while Geometry-Attention Consistency regularizes attention allocation and inter-fixation geometry.
+**GRAD overview.** Global-Regional Attribute Adaptation incorporates global context and regional attribute to construct image-specific search conditions and attribute-aware regional features. Spatial-guided Temporal Decoding estimates a task-relevant spatial prior for progressive trajectory generation, while Geometry-Attention Consistency regularizes attention allocation and inter-fixation geometry.
 
 ## Abstract
 
-Radiology scanpath prediction aims to model the dynamic visual search behavior of radiologists during task-specific diagnostic reasoning. However, abnormalities in radiological images often exhibit low contrast and subtle visual manifestations, requiring joint reasoning over anatomical structures and local abnormal findings. Accurate scanpath prediction further requires modeling spatial localization, temporal dependencies, and fixation geometry, posing substantial challenges to existing methods. Recent medical vision-language models have demonstrated strong capabilities in medical image understanding, providing rich clinical context beyond visual representations alone. Motivated by these advances, we propose HiSTAR, a Hierarchical Semantic-Aware Spatio-Temporal Decoding framework for radiology scanpath prediction. HiSTAR first introduces Hierarchical Semantic Adaptation to incorporate global and fine-grained clinical semantics, yielding an image-specific diagnostic search condition and semantics-aware regional representations. Spatial-guided Temporal Decoding then estimates a task-relevant spatial attention distribution and leverages the resulting spatial prior to guide progressive trajectory generation. Finally, Geometry-Attention Consistency jointly regularizes task-relevant attention allocation and inter-fixation geometry to promote diagnostically relevant and spatially coherent scanpaths. HiSTAR achieves state-of-the-art performance on the GazeSearch benchmark. Downstream disease classification on SIIM-ACR and TB-MOUSE further demonstrates that HiSTAR-predicted gaze provides effective task-relevant information for medical image analysis.
+Radiology scanpath prediction aims to model the dynamic visual search behavior of radiologists during diagnostic reasoning. Radiological abnormalities often exhibit low contrast and subtle visual manifestations, making the detailed clinical descriptions provided by vision-language models (VLMs) a valuable complement to visual representations. However, existing methods insufficiently characterize fine-grained radiographic attributes, while accurate prediction requires jointly modeling abnormality localization and the spatiotemporal dynamics of visual attention. We propose GARD, a Global-Regional Attribute-aware Spatio-Temporal Decoding framework for radiology scanpath prediction. Global-regional attribute adaptation leverages VLMs to obtain global context and regional attributes to construct an image-specific search condition and attribute-aware regional features, respectively. Spatial-guided temporal decoding estimates a task-relevant spatial attention distribution as a prior for progressive trajectory generation. Finally, geometry-attention consistency regularizes attention allocation and fixation geometry to encourage coherent scanpaths. GARD achieves state-of-the-art performance on the GazeSearch benchmark, with a ScanMatch score of 0.3942. Downstream disease classification on SIIM-ACR and TB-MOUSE further demonstrates that GARD-predicted gaze provides effective task-relevant information..
 
 ## Qualitative Visualization
 
 ![Qualitative comparison of predicted scanpaths](assets/scanpath_visualization.png)
 
-**Predicted scanpaths on GazeSearch.** HiSTAR concentrates fixations on diagnostically relevant regions and produces transitions that more closely follow radiologist scanpaths than the comparison methods.
+**Predicted scanpaths on GazeSearch.** GRAD concentrates fixations on diagnostically relevant regions and produces transitions that more closely follow radiologist scanpaths than the comparison methods.
 
 ## Repository Structure
 
 ```text
-HiSTAR/
+GRAD/
 ├── Data/
 │   ├── Text/<image-id>/
 │   │   ├── global.json
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 
 ## Training
 
-Run commands from the `HiSTAR` directory:
+Run commands from the `GRAD` directory:
 
 ```bash
 python method/train.py
